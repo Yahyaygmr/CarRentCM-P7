@@ -1,0 +1,33 @@
+﻿@model List<CarRentCM.Features.CQRS.Results.BrandResults.GetBrandQueryResult>
+@{
+    ViewData["Title"] = "BrandList";
+    int count = 0;
+}
+
+<h1>Marka</h1>
+
+<h4>Marka Listesi</h4>
+<hr />
+<div class="row">
+    <table class="table table-responsive table-hover" >
+        <tr>
+            <th>#</th>
+            <th>Marka</th>
+            <th>İşlemler</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            count++;
+            <tr>
+                <td>@count</td>
+                <td>@item.Name</td>
+                <td>
+                    <a href="/Brand/UpdateBrand/@item.BrandId" class="btn btn-sm btn-info">Detay</a>
+                    <a href="/Brand/DeleteBrand/@item.BrandId" class="btn btn-sm btn-danger">Sil</a>
+                </td>
+            </tr>            
+        }
+    </table>
+    <a href="/Brand/CreateBrand/" class="btn btn-sm btn-danger">+ Yeni Marka Ekle</a>
+</div>
+
