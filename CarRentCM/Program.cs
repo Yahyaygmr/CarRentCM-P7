@@ -1,6 +1,7 @@
 using CarRentCM.DAL.Context;
 using CarRentCM.Features.CQRS.Handlers.BrandHandlers.Read;
 using CarRentCM.Features.CQRS.Handlers.BrandHandlers.Write;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +15,7 @@ builder.Services.AddScoped<CreateBrandCommandHandler>();
 builder.Services.AddScoped<UpdateBrandCommandHandler>();
 builder.Services.AddScoped<DeleteBrandCommandHandler>();
 
+builder.Services.AddMediatR(config => config.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
 
 
 var app = builder.Build();
