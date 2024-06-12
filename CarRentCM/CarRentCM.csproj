@@ -13,9 +13,13 @@
     <None Include="wwwroot\carrentals-master\images\.DS_Store" />
     <None Include="wwwroot\carrentals-master\scss\.DS_Store" />
     <None Include="wwwroot\carrentals-master\scss\bootstrap\.DS_Store" />
+    <None Include="wwwroot\sidebar-02\css\.DS_Store" />
+    <None Include="wwwroot\sidebar-02\css\bootstrap\.DS_Store" />
+    <None Include="wwwroot\sidebar-02\css\bootstrap\mixins\.DS_Store" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
     <PackageReference Include="MediatR" Version="12.3.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.31" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.31">

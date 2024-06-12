@@ -1,0 +1,37 @@
+﻿@model List<CarRentCM.Features.Mediator.Results.CarResults.GetCarWithBrandQueryResult>
+@{
+    ViewData["Title"] = "CarList";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
+}
+<h1>Araç</h1>
+
+<h4>Araç Listesi</h4>
+<hr />
+<div class="row">
+    <table class="table table-hover">
+        <tr>
+            <th>#</th>
+            <th>Model</th>
+            <th>Marka</th>
+            <th>Lokasyon</th>
+            <th>İşlemler</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            count++;
+            <tr>
+                <td>@count</td>
+                <td>@item.ModelName</td>
+                <td>@item.BrandName</td>
+                <td>@item.Location</td>
+                <td>
+                    <a href="/Car/UpdateCar/@item.CarId" class="btn btn-sm btn-info">Detay</a>
+                    <a href="/Car/DeleteCar/@item.CarId" class="btn btn-sm btn-danger">Sil</a>
+                </td>
+            </tr>
+        }
+    </table>
+    <a href="/Car/CreateCar/" class="btn btn-sm btn-warning">+ Yeni Araç Ekle</a>
+</div>
+

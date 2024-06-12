@@ -22,6 +22,23 @@ namespace CarRentCM.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
+            modelBuilder.Entity("CarRentCM.DAL.Entities.BodyType", b =>
+                {
+                    b.Property<int>("BodyTypeId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("BodyTypeId"), 1L, 1);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("BodyTypeId");
+
+                    b.ToTable("BodyTypes");
+                });
+
             modelBuilder.Entity("CarRentCM.DAL.Entities.Brand", b =>
                 {
                     b.Property<int>("BrandId")
@@ -47,6 +64,9 @@ namespace CarRentCM.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CarId"), 1L, 1);
 
+                    b.Property<int>("BodyTypeId")
+                        .HasColumnType("int");
+
                     b.Property<int>("BrandId")
                         .HasColumnType("int");
 
@@ -66,6 +86,9 @@ namespace CarRentCM.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Km")
+                        .HasColumnType("int");
+
+                    b.Property<int>("LocationId")
                         .HasColumnType("int");
 
                     b.Property<int>("Luggage")
@@ -90,7 +113,11 @@ namespace CarRentCM.Migrations
 
                     b.HasKey("CarId");
 
+                    b.HasIndex("BodyTypeId");
+
                     b.HasIndex("BrandId");
+
+                    b.HasIndex("LocationId");
 
                     b.ToTable("Cars");
                 });
@@ -153,13 +180,29 @@ namespace CarRentCM.Migrations
 
             modelBuilder.Entity("CarRentCM.DAL.Entities.Car", b =>
                 {
+                    b.HasOne("CarRentCM.DAL.Entities.BodyType", "BodyType")
+                        .WithMany("Cars")
+                        .HasForeignKey("BodyTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("CarRentCM.DAL.Entities.Brand", "Brand")
                         .WithMany("Cars")
                         .HasForeignKey("BrandId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("CarRentCM.DAL.Entities.Location", "Location")
+                        .WithMany("Cars")
+                        .HasForeignKey("LocationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("BodyType");
+
                     b.Navigation("Brand");
+
+                    b.Navigation("Location");
                 });
 
             modelBuilder.Entity("CarRentCM.DAL.Entities.RentACar", b =>
@@ -187,6 +230,11 @@ namespace CarRentCM.Migrations
                     b.Navigation("PickUpLocation");
                 });
 
+            modelBuilder.Entity("CarRentCM.DAL.Entities.BodyType", b =>
+                {
+                    b.Navigation("Cars");
+                });
+
             modelBuilder.Entity("CarRentCM.DAL.Entities.Brand", b =>
                 {
                     b.Navigation("Cars");
@@ -199,6 +247,8 @@ namespace CarRentCM.Migrations
 
             modelBuilder.Entity("CarRentCM.DAL.Entities.Location", b =>
                 {
+                    b.Navigation("Cars");
+
                     b.Navigation("DropOffLocation");
 
                     b.Navigation("PickUpLocation");

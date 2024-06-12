@@ -16,6 +16,10 @@
         public decimal Price { get; set; }
         public int BrandId { get; set; }
         public Brand Brand { get; set; }
+        public int LocationId { get; set; }
+        public Location Location { get; set; }
+        public int BodyTypeId { get; set; }
+        public BodyType BodyType { get; set; }
 
         public List<RentACar> RentACars { get; set; }
     }

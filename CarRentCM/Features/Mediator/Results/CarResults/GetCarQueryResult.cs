@@ -1,4 +1,6 @@
-﻿namespace CarRentCM.Features.Mediator.Results.CarResults
+﻿using MediatR;
+
+namespace CarRentCM.Features.Mediator.Results.CarResults
 {
     public class GetCarQueryResult
     {
@@ -15,5 +17,7 @@
         public string Description { get; set; }
         public decimal Price { get; set; }
         public int BrandId { get; set; }
+        public int LocationId { get; set; }
+        public int BodyTypeId { get; set; }
     }
 }

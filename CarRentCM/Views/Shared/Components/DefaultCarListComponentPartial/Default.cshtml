@@ -1,0 +1,112 @@
+﻿@model List<CarRentCM.Features.Mediator.Results.CarResults.GetCarWithBrandQueryResult>
+@{
+    int count = 0;
+}
+<div class="site-section bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7">
+                <h2 class="section-heading"><strong>Araç Listesi</strong></h2>
+                <p class="mb-5">Son Eklenen Araçlarımız</p>
+            </div>
+        </div>
+
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                count++;
+                var modalId = "carModal" + count;
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="listing d-block align-items-stretch">
+                        <div class="listing-img h-100 mr-4">
+                            <img src="@item.ImageUrl" alt="Image" class="img-fluid clickable" data-toggle="modal" data-target="#@modalId" style="height:200px; object-fit:cover;">
+                        </div>
+                        <div class="listing-contents h-100">
+                            <h3 class="clickable" data-toggle="modal" data-target="#@modalId">@item.BrandName @item.ModelName</h3>
+                            <div class="rent-price">
+                                <strong>₺@item.Price</strong><span class="mx-1">/</span>Günlük
+                            </div>
+                            <div class="d-block d-md-flex mb-3 border-bottom pb-3">
+                                <div class="listing-feature pr-4">
+                                    <span class="caption">Bagaj Hacmi(lt):</span>
+                                    <span class="number">@item.Luggage</span>
+                                </div>
+                                <div class="listing-feature pr-4">
+                                    <span class="caption">Kapı:</span>
+                                    <span class="number">@item.Door</span>
+                                </div>
+                                <div class="listing-feature pr-4">
+                                    <span class="caption">Yolcu:</span>
+                                    <span class="number">@item.Seat</span>
+                                </div>
+                            </div>
+                            <div>
+                                <p>@item.Description</p>
+                                <p><a href="#" class="btn btn-primary btn-sm">Şimdi Kirala</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal -->
+                <div class="modal fade" id="@modalId" tabindex="-1" role="dialog" aria-labelledby="carModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="carModalLabel">Araç Bilgileri</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="listing d-block align-items-stretch">
+                                    <div class="listing-img h-100 mr-4 mt-3">
+                                        <img src="@item.ImageUrl" alt="Image" class="img-fluid" style="width:100%; object-fit:cover;">
+                                    </div>
+                                    <div class="listing-contents h-100">
+                                        <h3>@item.BrandName @item.ModelName</h3>
+                                        <div class="rent-price">
+                                            <strong>₺@item.Price</strong><span class="mx-1">/</span>Günlük
+                                        </div>
+                                        <div class="d-block d-md-flex mb-3 border-bottom pb-3">
+                                            <div class="listing-feature pr-4">
+                                                <span class="caption">Bagaj Hacmi(lt):</span>
+                                                <span class="number">@item.Luggage</span>
+                                            </div>
+                                            <div class="listing-feature pr-4">
+                                                <span class="caption">Kapı:</span>
+                                                <span class="number">@item.Door</span>
+                                            </div>
+                                            <div class="listing-feature pr-4">
+                                                <span class="caption">Yolcu:</span>
+                                                <span class="number">@item.Seat</span>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            
+                                            <ul>
+                                                <li>Kilometre      : @item.Km</li>
+                                                <li>Vites          : @item.Transmission</li>
+                                                <li>Yetişkin Yolcu : @item.Seat Kişi</li>
+                                                <li>Bagaj Hacmi    : @item.Luggage (Litre)</li>
+                                                <li>Yakıt Türü     : @item.Fuel</li>
+                                            </ul>
+                                            <hr />
+                                            <p>@item.Description</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <p><button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button></p>
+                                <p><a href="#" class="btn btn-primary btn-sm">Şimdi Kirala</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+

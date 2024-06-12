@@ -1,33 +1,31 @@
 ﻿@model CarRentCM.Features.CQRS.Commands.BrandCommands.CreateBrandCommand
 
 @{
+    Layout = "_adminLayout";
     ViewData["Title"] = "CreateBrand";
 }
 
-<h1>CreateBrand</h1>
+<h1>Marka</h1>
 
-<h4>Brand</h4>
+<h4>Yeni marka ekleme</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="CreateBrand">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
+                <label asp-for="Name" class="control-label">Marka Adı</label>
                 <input asp-for="Name" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Kaydet" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="BrandList">Back to List</a>
+    <a asp-action="BrandList">Listeye Dön</a>
 </div>
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}

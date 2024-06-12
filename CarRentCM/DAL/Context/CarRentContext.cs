@@ -13,6 +13,7 @@ namespace CarRentCM.DAL.Context
         public DbSet<Brand> Brands { get; set; }
         public DbSet<Location> Locations { get; set; }
         public DbSet<RentACar> RentACars { get; set; }
+        public DbSet<BodyType> BodyTypes { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<RentACar>()

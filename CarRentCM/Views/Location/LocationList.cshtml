@@ -1,0 +1,34 @@
+﻿@model List<CarRentCM.Features.CQRS.Results.LocationResults.GetLocationQueryResult>
+@{
+    ViewData["Title"] = "LocationList";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
+}
+
+<h1>Lokasyon</h1>
+
+<h4>Lokasyon Listesi</h4>
+<hr />
+<div class="row">
+    <table class="table table-hover">
+        <tr>
+            <th>#</th>
+            <th>Lokasyon</th>
+            <th>İşlemler</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            count++;
+            <tr>
+                <td>@count</td>
+                <td>@item.LocationName</td>
+                <td>
+                    <a href="/Location/UpdateLocation/@item.LocationId" class="btn btn-sm btn-info">Detay</a>
+                    <a href="/Location/DeleteLocation/@item.LocationId" class="btn btn-sm btn-danger">Sil</a>
+                </td>
+            </tr>
+        }
+    </table>
+    <a href="/Location/CreateLocation/" class="btn btn-sm btn-warning">+ Yeni Lokasyon Ekle</a>
+</div>
+

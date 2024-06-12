@@ -1,0 +1,37 @@
+﻿@model CarRentCM.Features.CQRS.Results.LocationResults.GetLocationByIdQueryResult
+@{
+    ViewData["Title"] = "UpdateLocation";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>UpdateLocation</h1>
+
+<h4>Location</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <input type="hidden" asp-for="LocationId" />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="LocationName" class="control-label">Lokasyon Adı</label>
+                <input asp-for="LocationName" class="form-control" />
+                <span asp-validation-for="LocationName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+
+                <input type="checkbox" asp-for="Status" class="form-check-input" />
+                <label asp-for="Status" class="form-check-label">Yayınlansın mı?</label>
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Güncelle" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="LocationList">Listeye Dön</a>
+</div>
+

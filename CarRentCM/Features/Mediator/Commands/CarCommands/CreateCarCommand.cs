@@ -16,5 +16,7 @@ namespace CarRentCM.Features.Mediator.Commands.CarCommands
         public string Description { get; set; }
         public decimal Price { get; set; }
         public int BrandId { get; set; }
+        public int LocationId { get; set; }
+        public int BodyTypeId { get; set; }
     }
 }

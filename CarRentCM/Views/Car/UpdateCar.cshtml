@@ -1,0 +1,106 @@
+﻿@using CarRentCM.DAL.Entities
+@model CarRentCM.Features.Mediator.Results.CarResults.GetCarByIdQueryResult
+@{
+    ViewData["Title"] = "UpdateCar";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<h1>Araç</h1>
+
+<h4>Yeni güncelleme</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="CarId"/>
+            <div class="form-group">
+                <label asp-for="LocationId" class="control-label">Lokasyon</label>
+                <input asp-for="LocationId" class="form-control" />
+                <span asp-validation-for="LocationId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BrandId" class="control-label">Marka</label>
+                <select asp-for="BrandId" class="form-control">
+                    <option>Marka Seçin</option>
+                    @foreach (var item in (List<Brand>)ViewBag.brands)
+                    {
+                        <option value="@item.BrandId">@item.Name</option>
+                    }
+
+                </select>
+                <span asp-validation-for="BrandId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BodyTypeId" class="control-label">Kasa Tipi</label>
+                <input asp-for="BodyTypeId" class="form-control" />
+                <span asp-validation-for="BodyTypeId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ModelName" class="control-label">Model Adı</label>
+                <input asp-for="ModelName" class="form-control" />
+                <span asp-validation-for="ModelName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ImageUrl" class="control-label">Resim Url</label>
+                <input asp-for="ImageUrl" class="form-control" />
+                <span asp-validation-for="ImageUrl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Km" class="control-label">KM</label>
+                <input asp-for="Km" class="form-control" />
+                <span asp-validation-for="Km" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Door" class="control-label">Kapı</label>
+                <input asp-for="Door" class="form-control" />
+                <span asp-validation-for="Door" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Transmission" class="control-label">Şanzıman</label>
+                <input asp-for="Transmission" class="form-control" />
+                <span asp-validation-for="Transmission" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Seat" class="control-label">Koltuk Sayısı</label>
+                <input asp-for="Seat" class="form-control" />
+                <span asp-validation-for="Seat" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Luggage" class="control-label">Bagaj Hacmi</label>
+                <input asp-for="Luggage" class="form-control" />
+                <span asp-validation-for="Luggage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Fuel" class="control-label">Yakıt Türü</label>
+                <input asp-for="Fuel" class="form-control" />
+                <span asp-validation-for="Fuel" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label">Fiyat</label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label">Açıklama</label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+
+                <input type="checkbox" asp-for="Status" class="form-check-input" />
+                <label asp-for="Status" class="form-check-label">Yayınlansın mı?</label>
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Güncelle" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="CarList">Listeye Dön</a>
+</div>
