@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using CarRentCM.DAL.Context;
-using CarRentCM.Features.CQRS.Results.LocationResults;
+using CarRentCM.Features.CQRS.Results.BodyTypeResults;
 
 namespace CarRentCM.Features.CQRS.Handlers.BodyTypeHandlers.Read
 {

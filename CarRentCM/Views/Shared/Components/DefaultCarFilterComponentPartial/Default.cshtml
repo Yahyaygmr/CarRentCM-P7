@@ -1,28 +1,30 @@
-﻿
-<form class="trip-form">
+﻿@using CarRentCM.DAL.Entities
+@model CarRentCM.Models.CarViewModels.SearchCarViewModel
+
+<form class="trip-form" method="post" asp-action="SearchCar" asp-controller="Default">
 
     <div class="container">
         <div class="row">
             <div class="mb-3 col-md-4">
                 <div class="form-control-wrap">
-                    <select name="" id="" class="custom-select form-control">
+                    <select  id="" class="custom-select form-control" asp-for="BodyType">
                         <option value="">Araç Tipi</option>
-                        <option value="">Sedan</option>
-                        <option value="">Suv</option>
-                        <option value="">MPV</option>
-                        <option value="">Hatcback</option>
+                        @foreach (var item in (List<BodyType>)ViewBag.bodyTypes)
+                        {
+                            <option value="@item.BodyTypeId">@item.Name</option>
+                        }
                     </select>
                 </div>
             </div>
             <div class="mb-3 col-md-4">
                 <div class="form-control-wrap">
-                    <input type="text" id="cf-2" placeholder="Alış Tarihi" class="form-control datepicker px-3">
+                    <input type="text" id="cf-2" placeholder="Alış Tarihi" class="form-control datepicker px-3" asp-for="PickUpDate">
                     <span class="icon icon-date_range"></span>
                 </div>
             </div>
             <div class="mb-3 col-md-4">
                 <div class="form-control-wrap">
-                    <input type="text" id="cf-3" placeholder="Teslim Tarihi" class="form-control datepicker px-3">
+                    <input type="text" id="cf-3" placeholder="Teslim Tarihi" class="form-control datepicker px-3" asp-for="DropOffDate">
                     <span class="icon icon-date_range"></span>
                 </div>
             </div>
@@ -31,12 +33,12 @@
             <div class="mb-3 col-md-4">
                 <div class="form-control-wrap">
                     <div class="form-control-wrap">
-                        <select name="" id="" class="custom-select form-control">
+                        <select  id="" class="custom-select form-control" asp-for="PickUpLocation">
                             <option value="">Alış Lokasyonu</option>
-                            <option value="">Sedan</option>
-                            <option value="">Suv</option>
-                            <option value="">MPV</option>
-                            <option value="">Hatcback</option>
+                            @foreach (var item in (List<Location>)ViewBag.locations)
+                            {
+                                <option value="@item.LocationId">@item.LocationName</option>
+                            }
                         </select>
                     </div>
                 </div>
@@ -44,18 +46,18 @@
             <div class="mb-3 col-md-4">
                 <div class="form-control-wrap">
                     <div class="form-control-wrap">
-                        <select name="" id="" class="custom-select form-control">
+                        <select  id="" class="custom-select form-control" asp-for="DropOffLocation">
                             <option value="">Teslim Lokasyonu</option>
-                            <option value="">Sedan</option>
-                            <option value="">Suv</option>
-                            <option value="">MPV</option>
-                            <option value="">Hatcback</option>
+                            @foreach (var item in (List<Location>)ViewBag.locations)
+                            {
+                                <option value="@item.LocationId">@item.LocationName</option>
+                            }
                         </select>
                     </div>
                 </div>
             </div>
             <div class="mb-3 col-md-4">
-                <input type="submit" value="Araç Bul" class="btn btn-primary btn-block py-3">
+                <button class="btn btn-primary btn-block py-3">Araç Bul</button>
             </div>
         </div>
     </div>

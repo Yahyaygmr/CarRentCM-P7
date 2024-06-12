@@ -2,6 +2,7 @@
 using CarRentCM.DAL.Entities;
 using CarRentCM.Features.CQRS.Commands.BodyTypeCommands;
 using CarRentCM.Features.CQRS.Commands.LocationCommands;
+using CarRentCM.Features.CQRS.Results.BodyTypeResults;
 using CarRentCM.Features.CQRS.Results.BrandResults;
 using CarRentCM.Features.CQRS.Results.LocationResults;
 using CarRentCM.Features.Mediator.Commands.CarCommands;

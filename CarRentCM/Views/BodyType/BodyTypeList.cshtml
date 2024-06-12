@@ -1,0 +1,34 @@
+﻿@model List<CarRentCM.Features.CQRS.Results.BodyTypeResults.GetBodyTypeQueryResult>
+@{
+    ViewData["Title"] = "BodyTypeList";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
+}
+
+<h1>Gövde Tipi</h1>
+
+<h4>Gövde Tipi Listesi</h4>
+<hr />
+<div class="row">
+    <table class="table table-hover">
+        <tr>
+            <th>#</th>
+            <th>Gövde Tipi</th>
+            <th>İşlemler</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            count++;
+            <tr>
+                <td>@count</td>
+                <td>@item.Name</td>
+                <td>
+                    <a href="/BodyType/UpdateBodyType/@item.BodyTypeId" class="btn btn-sm btn-info">Detay</a>
+                    <a href="/BodyType/DeleteBodyType/@item.BodyTypeId" class="btn btn-sm btn-danger">Sil</a>
+                </td>
+            </tr>
+        }
+    </table>
+    <a href="/BodyType/CreateBodyType/" class="btn btn-sm btn-warning">+ Yeni Gövde Tipi Ekle</a>
+</div>
+
