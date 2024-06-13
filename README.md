@@ -25,6 +25,7 @@ Bu proje, CQRS ve Mediatör tasarım desenlerini kullanarak bir .NET Core MVC uy
 - .Net Core Mvc
 - EntityFramework
 - AutoMapper
+- MediatR
 
 ## Projeye Ait Görseller
 
